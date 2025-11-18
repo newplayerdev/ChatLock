@@ -1,15 +1,16 @@
-# ChatLock
+## ChatLock
 A simple PocketMine-MP 5.0 plugin that allows you to lock and unlock the chat
 
-**Usage:** /chatlock [on|off]
+## Command Usage 
+`/chatlock [on|off]`
 
 Executing `/chatlock` will commute the state of the chat lock
 
-**Permissions:** 
-- chatlock.use -> To use chatlock command
-- chatlock.bypass -> To bypass the chatlock
+## Permissions
+- `chatlock.use` -> To use chatlock command
+- `chatlock.bypass` -> To bypass the chatlock
             
-**Config** 
+## Config
 
 `config.yml` file:
 
@@ -22,7 +23,7 @@ command-description: "Allow you to lock or unlock the chat"
 # Permission message
 permission-message: "§cYou don't have the permission to use that command !"
 
-# Messages sent to player when chat locked
+# Messages sent to player when locking/unlocking the chat
 chatlock-on: "You locked the chat"
 chatlock-off: "You unlocked the chat"
 chatlock-already-on: "Chat is already locked"
@@ -33,9 +34,8 @@ chatlock-already-off: "Chat is already unlocked"
 broadcast-message-locked: "§c{player} §flocked the chat !"
 broadcast-message-unlocked: "§c{player} §funlocked the chat !"
 
-# Messages sent to player when try to talk in chat
+# Messages sent to the player trying to send a message when the chat is locked
 chat-is-locked: "§cThe chat is currently locked"
 
 ...
-
 ```
