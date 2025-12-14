@@ -6,10 +6,14 @@ use NewPlayerMC\ChatLock;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
+use pocketmine\plugin\Plugin;
+use pocketmine\plugin\PluginOwned;
+use pocketmine\plugin\PluginOwnedTrait;
 use pocketmine\utils\TextFormat as TF;
 
-class ChatLockCommand extends Command
+class ChatLockCommand extends Command implements PluginOwned
 {
+    use PluginOwnedTrait;
 
     private ChatLock $chatLock;
 
@@ -18,12 +22,16 @@ class ChatLockCommand extends Command
         parent::__construct("chatlock");
 
         $this->chatLock = ChatLock::getInstance();
-        $chatLock = $this->chatLock;
-
+        $chatLock = $this->getOwningPlugin();
         $this->setUsage("chatlock <on|off>");
         $this->setDescription($chatLock->getConfig()->get("command-description"));
         $this->setPermission("chatlock.use");
         $this->setPermissionMessage($chatLock->getConfig()->get("permission-message"));
+    }
+
+    public function getOwningPlugin(): Plugin
+    {
+        return ChatLock::getInstance();
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args): void
